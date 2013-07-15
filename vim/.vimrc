@@ -23,6 +23,7 @@ Bundle 'FuzzyFinder'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'https://github.com/Lokaltog/vim-powerline.git'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'pyflakes.vim'
 
 
 " --------------------------
@@ -46,6 +47,18 @@ imap jk <Esc>
 :map <C-k> <Esc>:tabn<CR>
 :map <C-x> <Esc>:tabc<CR>
 :map <C-m> <Esc>:tabnew<Space>
+
+" ----------------
+" 空格高亮
+" -------------
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+highlight OverLength ctermbg=red ctermfg=white guibg=#dd6666
+match OverLength /\%81v.\+/
 
 " -----------------------
 "  solarized color schema
@@ -164,3 +177,11 @@ au BufRead,BufNewFile /home/adam/Code/work/ifanr/* set shiftwidth=2
 au BufRead,BufNewFile /home/adam/Code/work/ifanr/* set tabstop=2 
 au BufRead,BufNewFile /home/adam/Code/work/ifanr/* set expandtab
 au BufRead,BufNewFile /home/adam/Code/work/ifanr/* set softtabstop=2
+
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
